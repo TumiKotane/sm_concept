@@ -1,4 +1,4 @@
-removeEventListener('dotenv').config() // to access enviroonment variables
+require('dotenv').config() // to access enviroonment variables
 const express = require('express');
 const app = express(); // create an instance of express web server
 
