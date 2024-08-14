@@ -41,12 +41,37 @@ db.sequelize.sync({ force: false })
 })
 
 //1 to Many relation
-db.users.hasMany(db.posts)
-db.posts.belongsTo(db.users)
-db.posts.hasMany(db.comments)
-db.comments.belongsTo(db.posts)
-db.users.hasMany(db.comments)
-db.comments.belongsTo(db.users)
+db.users.hasMany(db.posts, {
+    foreignKey: 'userId',
+    as: 'posts'
+})
+
+db.posts.belongsTo(db.users, {
+    foreignKey: 'userId',
+    as: 'user'
+})
+
+db.posts.hasMany(db.comments, {
+    foreignKey: 'postId',
+    as: 'comments'
+})
+
+db.comments.belongsTo(db.posts,
+    {
+        foreignKey: 'postId',
+        as: 'post'
+    }
+)
+
+db.users.hasMany(db.comments, {
+    foreignKey: 'userId',
+    as: 'comments'
+})
+
+db.comments.belongsTo(db.users, {
+    foreignKey: 'userId',
+    as: 'user'
+})
 
 
 module.exports = db
