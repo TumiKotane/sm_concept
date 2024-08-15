@@ -1,8 +1,10 @@
 require('dotenv').config() // To access environment variables
 const express = require('express');
 const app = express(); // Create an instance of Express Web server
+const cors = require('cors')
 
 app.use(express.json())
+app.use(cors({ origin: '*' }))
 app.use(express.urlencoded({ extended: true }))
 
 // const router = require('./routes/userRouter');
