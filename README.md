@@ -18,7 +18,10 @@ Social Media concept(sm-concept) is an API intended to follow the CRUD functiona
 
 ## Screenshots
 
-WILL BE LOADED SOON
+![Screenshot 2024-08-15 065727](https://github.com/user-attachments/assets/63573497-4409-479d-9041-cdad739643f6)
+![Screenshot 2024-08-15 070723](https://github.com/user-attachments/assets/74e0bbdf-0acf-4167-81a5-8b3cd5e64dd6)
+![Screenshot 2024-08-15 070814](https://github.com/user-attachments/assets/0f1327a2-bcef-4a3f-8cb6-4e0efe56aa23)
+
 
 ## Installation
 
