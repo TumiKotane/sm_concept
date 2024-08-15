@@ -6,8 +6,8 @@ const app = express(); // create an instance of express web server
 app.use(express.json()) //middleware to parse json data
 app.use(express.urlencoded({ extended: true })) //middleware to parse form data
 
-const router = require('./Routes/userRouter.js');
-app.use('/api', router); //middleware to use the router
+//const router = require('./Routes/userRouter.js');
+//app.use('/api', router); //middleware to use the router
 
 app.get('/', (req, res) => {
     res.send('Hello World');
