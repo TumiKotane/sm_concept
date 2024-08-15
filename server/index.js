@@ -1,45 +1,56 @@
-require('dotenv').config() // to access enviroonment variables
-
+require('dotenv').config() // To access environment variables
 const express = require('express');
-const app = express(); // create an instance of express web server
+const app = express(); // Create an instance of Express Web server
 
-app.use(express.json()) //middleware to parse json data
-app.use(express.urlencoded({ extended: true })) //middleware to parse form data
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
 
-//const router = require('./Routes/userRouter.js');
-//app.use('/api', router); //middleware to use the router
+// const router = require('./routes/userRouter');
+// app.use('/api', router); //
+/*============================================================ */
+const db = require('./models/database.js')
+const Users = db.users
 
 app.get('/', (req, res) => {
-    res.send('Hello World');
-}); //default endpoint
+  res.send('Hello World!');
+}); // Default endpoint.
 
-//Tester endpoints
+app.post('/api/addUser', async (req, res) => {
+  let info = {
+      username: req.body.username,
+      email: req.body.email,
+      password: req.body.password
+  }
 
-//app.get('/SignUp', (req, res) => {
-// res.send('This will be the sign up page');
-//}); //default endpoint
+  const user = await Users.create(info)
+  res.status(200).send(user)
+  console.log('User added!')
+}); // Add a User
 
-//app.get('/LogIn', (req, res) => {
- //   res.send('This will be the login page');
-//}); //default endpoint
+app.get('/api/getAllUsers', async (req, res) => {
+  const users = await Users.findAll({})
+  res.status(200).send(users)
+}) // Get all created Users
 
-//app.get('/Home', (req, res) => {
- //   res.send('This will be the home page');
-//}); //default endpoint
+app.get('/api/getUser/:id', async (req, res) => {
+    let id = req.params.id
+    let user = await Users.findOne({ where: { id: id }})
+    res.status(200).send(user)
+}) // Get one User by Id
 
-//app.get('/Profile', (req, res) => {
-//    res.send('This will be the profile page');
-//}); //default endpoint
+app.put('/api/updateUser/:id', async (req, res) => {
+  let id = req.params.id
+  const user = await Users.update(req.body, { where: { id: id }})
+  res.status(200).send('User Info has been updated')
+}) // Update one User by Id
 
-//app.get('/Comments', (req, res) => {
-//    res.send('This will be the comments page');
-//}); //default endpoint
-
-app.get('/Inbox', (req, res) => {
-    res.send('This will be the inbox page');
-}); //default endpoint
-
-const PORT = process.env.PORT || 3000;
+app.delete('/api/deleteUser/:id', async (req, res) => {
+  let id = req.params.id
+  await Users.destroy({ where: { id: id }} )
+  res.status(200).send('User is deleted !')
+}) // Delete one User by Id
+/*============================================================ */
+const PORT = process.env.PORT;
 app.listen(PORT, () => {
-    console.log(`Server is running on https://localhost:${PORT}`);
-})
+  console.log(`Youre up and running on http://localhost:${PORT}`);
+});

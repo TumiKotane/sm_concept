@@ -1,26 +1,23 @@
-const { DataTypes } = require("sequelize")
-const { sequelize } = require("./database")
+const { DataTypes } = require("sequelize");
+const { sequelize } = require("./database");
 
 module.exports = (sequelize, DataTypes) => {
-    const Post = sequelize.define('post', {
+    const Post = sequelize.define("post", {
         id: {
             type: DataTypes.INTEGER,
-            primaryKey: true,
-            autoIncrement: true
+            primaryKey:true,
+            autoIncrement:true,
         },
         title: {
             type: DataTypes.STRING,
             allowNull: false
         },
         content: {
-            type: DataTypes.STRING,
+            type: DataTypes.TEXT,
             allowNull: false
         },
-         userId: {
-            type: DataTypes.INTEGER,
-            allowNull: false
-        },
-        timestamps: true 
+        // timestamps: true
     })
-    return Post
+
+    return Post;
 }
