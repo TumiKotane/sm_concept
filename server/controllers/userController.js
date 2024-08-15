@@ -1,4 +1,4 @@
-const db = require('../models/database.js')
+const db = require('../models/database')
 
 //create main model
 const Users = db.users
