@@ -52,6 +52,43 @@ app.delete('/api/deleteUser/:id', async (req, res) => {
   res.status(200).send('User is deleted !')
 }) // Delete one User by Id
 /*============================================================ */
+/*============================================================ */
+const Posts = db.posts
+
+app.post('/api/createPost', async (req, res) => {
+  let info = {
+    id: req.body.id,
+    title: req.body.title,
+    content: req.body.content
+  };
+
+  const post = await Posts.create(info)
+  res.status(200).send(info)
+})
+
+app.get('/api/getAllPosts', async (req, res) => {
+  const posts = await Posts.findAll({})
+  res.status(200).send(posts)
+})
+
+app.get('/api/getPost/:id', async (req, res) => {
+  let id = req.params.id
+  const post = await Posts.findOne(req.body, { where: { id: id }})
+  res.status(200).send(post)
+})
+
+app.put('/api/getPost/:id', async (req, res) => {
+  let id = req.params.id
+  const post = await Posts.update(req.body, { where: { id: id }})
+  res.status(200).send("Post has been updated!")
+})
+
+app.delete('/api/getPost/:id', async (req, res) => {
+  let id = req.params.id
+  await Posts.delete(req.body, { where: { id: id }})
+  res.status(200).send("Post has been deleted!")
+})
+/*============================================================ */
 const PORT = process.env.PORT;
 app.listen(PORT, () => {
   console.log(`Youre up and running on http://localhost:${PORT}`);

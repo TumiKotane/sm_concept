@@ -24,16 +24,37 @@ export default function Home() {
     console.log(result.data);
   };
   return (
-    <div>
-      <h1>HomePage</h1>
-      <h1>Create a User</h1>
-      <form onSubmit={createUser}>
-        <table>
-          <tr><td><input ref={usernameRef} type="text" placeholder="username" /></td></tr>
-          <tr><td><input ref={passwordRef} type="password" placeholder="password" /></td></tr>
-          <tr><td><input ref={emailRef} type="email" placeholder="email" /></td></tr>
-        </table>
-        <button
+    
+    <div className=" items-center justify-center  rounded-lg p-40">
+      <form className="flex flex-col gap-3" onSubmit={createUser}>
+        <div>
+          <label htmlFor="firstName" className="font-medium text-black">
+            Username
+          </label>
+          <input ref={usernameRef} type="text" placeholder="username" className="w-full bg-gray-700 text-gray-300  rounded-md shadow-sm p-2"
+          />
+        </div>
+        <div>
+          <label
+            htmlFor="lastName"
+            className="block  font-medium  text-black"
+          >
+            Password
+          </label>
+          <input ref={passwordRef} type="password" placeholder="password"
+            className="w-full bg-gray-700 text-gray-300  rounded-md shadow-sm p-2"
+          />
+        </div>
+        <div>
+          <label htmlFor="email" className="block  font-medium  text-black">
+            Email
+          </label>
+          <input ref={emailRef} type="email" placeholder="email" 
+            className="w-full bg-gray-700 text-gray-300  rounded-md shadow-sm p-2"
+          />
+        </div>
+        
+          <button
           className={"mt-4 bg-green-500 text-white border p-2 rounded-md"}
           type="submit"
         >
@@ -41,18 +62,22 @@ export default function Home() {
         </button>
       </form>
       {feedback && <p>{JSON.stringify(feedback)}</p>}
+      
       <button
         className="mt-4 bg-blue-500 text-white border p-2 rounded-md"
         onClick={fetchUsers}
       >
         Fetch Users
       </button>
+      
       {users && (
         <>
           <h1>List of users: </h1>
           {JSON.stringify(users)}
         </>
       )}
+      
+      
     </div>
   );
 }
