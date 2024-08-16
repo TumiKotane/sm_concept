@@ -24,13 +24,15 @@ export default function Home() {
     console.log(result.data);
   };
   return (
-    <div className="flex items-center justify-center h-screen bg-lime-400">
+    <div>
       <h1>HomePage</h1>
       <h1>Create a User</h1>
       <form onSubmit={createUser}>
-        <input ref={usernameRef} type="text" placeholder="username" />
-        <input ref={passwordRef} type="password" placeholder="password" />
-        <input ref={emailRef} type="email" placeholder="email" />
+        <table>
+          <tr><td><input ref={usernameRef} type="text" placeholder="username" /></td></tr>
+          <tr><td><input ref={passwordRef} type="password" placeholder="password" /></td></tr>
+          <tr><td><input ref={emailRef} type="email" placeholder="email" /></td></tr>
+        </table>
         <button
           className={"mt-4 bg-green-500 text-white border p-2 rounded-md"}
           type="submit"
