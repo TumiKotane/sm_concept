@@ -24,7 +24,7 @@ export default function Home() {
     console.log(result.data);
   };
   return (
-    <div>
+    <div className="flex items-center justify-center h-screen bg-lime-400">
       <h1>HomePage</h1>
       <h1>Create a User</h1>
       <form onSubmit={createUser}>
