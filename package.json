@@ -1,0 +1,12 @@
+{
+  "name": "sm_concept",
+  "version": "1.0.0",
+  "description": "Social Media concept(sm-concept) is an API intended to follow the CRUD functionality, similar to the APP Facebook. It allows the user to manipulate the data stored.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
